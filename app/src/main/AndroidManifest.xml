@@ -21,6 +21,8 @@
             android:label="@string/title_activity_recycler"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity android:name=".myview.act.CustomActivity"/>
     </application>
 
 </manifest>
