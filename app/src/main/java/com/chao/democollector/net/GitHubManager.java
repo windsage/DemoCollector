@@ -1,8 +1,14 @@
 package com.chao.democollector.net;
 
+import com.chao.democollector.util.Utils;
+
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,12 +20,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GitHubManager {
 
     private static final String BASE_URL = "https://api.github.com";
-    private GitHubService mGitHubService = null;
-    private int time_out = 20;
+    private static final int time_out = 20;
 
     public GitHubService getApiService() {
+        Interceptor interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request().newBuilder()
+                        .addHeader("Authorization", Utils.base64Encode("windsage:Matrix0807"))
+                        .build();
+                return chain.proceed(request);
+            }
+        };
         OkHttpClient client = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
+                .addInterceptor(interceptor)
                 .readTimeout(time_out, TimeUnit.SECONDS)
                 .connectTimeout(time_out, TimeUnit.SECONDS).build();
 
@@ -30,7 +45,6 @@ public class GitHubManager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-        mGitHubService = retrofit.create(GitHubService.class);
-        return mGitHubService;
+        return retrofit.create(GitHubService.class);
     }
 }

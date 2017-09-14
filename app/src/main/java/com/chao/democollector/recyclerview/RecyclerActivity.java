@@ -2,7 +2,6 @@ package com.chao.democollector.recyclerview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 import com.chao.democollector.R;
 import com.chao.democollector.recyclerview.adapter.WeatherAdapter;
-import com.chao.democollector.recyclerview.callback.DiffCallBack;
 import com.chao.democollector.recyclerview.divider.DividerGridItemDecoration;
 
 import java.util.ArrayList;
@@ -51,8 +49,8 @@ public class RecyclerActivity extends AppCompatActivity {
                 Toast.makeText(RecyclerActivity.this, position + "", Toast.LENGTH_LONG).show();
             }
         });
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffCallBack(mDatas, mDatas), true);
-        diffResult.dispatchUpdatesTo(mWeatherAdapter);
+//        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffCallBack(mDatas, mDatas), true);
+//        diffResult.dispatchUpdatesTo(mWeatherAdapter);
 
     }
 
