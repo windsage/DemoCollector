@@ -19,7 +19,7 @@ import com.chao.democollector.R;
 
 public class CustomTitleView extends View {
 
-    private String mTitleText = "3712";
+    private String mTitleText;
     /**
      * 文本的颜色
      */

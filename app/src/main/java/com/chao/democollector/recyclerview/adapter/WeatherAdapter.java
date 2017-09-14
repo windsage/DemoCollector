@@ -22,6 +22,18 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
     private LayoutInflater mInflater;
 
+    private OnItemClickListener mItemClickListener;
+
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        mItemClickListener = itemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(TextView text, int position);
+
+        void onItemLongClick(View view, int position);
+    }
+
     public WeatherAdapter(Context ctx, List<String> cityList) {
         this.cityList = cityList;
         mInflater = LayoutInflater.from(ctx);
@@ -34,8 +46,25 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.cityName.setText(cityList.get(position));
+        holder.cityName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemClick(holder.cityName, holder.getLayoutPosition());
+                }
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemLongClick(holder.itemView, holder.getLayoutPosition());
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -43,7 +72,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         return cityList == null ? 0 : cityList.size();
     }
 
-   static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView cityName;
         TextView cityWeather;
