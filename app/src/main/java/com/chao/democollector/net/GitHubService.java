@@ -1,9 +1,9 @@
 package com.chao.democollector.net;
 
-import android.database.Observable;
 
 import com.chao.democollector.recyclerview.bean.User;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**
@@ -12,6 +12,6 @@ import retrofit2.http.GET;
 
 public interface GitHubService {
 
-    @GET("/user")
+    @GET("users/windsage")
     Observable<User> getAuthorUser();
 }
