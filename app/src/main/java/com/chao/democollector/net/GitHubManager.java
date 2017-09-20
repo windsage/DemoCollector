@@ -1,6 +1,6 @@
 package com.chao.democollector.net;
 
-import com.chao.democollector.util.Utils;
+import com.chao.democollector.Config;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +27,9 @@ public class GitHubManager {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request().newBuilder()
-                        .addHeader("Authorization", Utils.base64Encode("windsage:Matrix0807"))
+                        .addHeader("Content-Type", "application/json;charset=utf-8")
+                        .addHeader("Accept", "application/vnd.github.v3+json")
+                        .addHeader("Authorization", "token " + Config.ACCESS_TOKEN)
                         .build();
                 return chain.proceed(request);
             }

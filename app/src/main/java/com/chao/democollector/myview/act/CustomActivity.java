@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.chao.democollector.R;
+import com.chao.democollector.bean.User;
 import com.chao.democollector.net.GitHubManager;
 import com.chao.democollector.net.GitHubService;
-import com.chao.democollector.recyclerview.bean.User;
+import com.chao.democollector.req.ReqUser;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,17 +27,41 @@ public class CustomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom);
         GitHubService service = new GitHubManager().getApiService();
-        service.getAuthorUser().subscribeOn(Schedulers.io())
+        ReqUser reqUser = new ReqUser();
+        reqUser.setUsername("windsage");
+        service.getSingleUser("Blankj").subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        d.dispose();
                     }
 
                     @Override
                     public void onNext(User users) {
-                        Log.e("TAG",users.getName());
+                        Log.e("TAG", users.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("TAG", e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        service.getAuthenticatedUsers().observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
+                .subscribe(new Observer<User>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(User user) {
+                            Log.e("TAG", user.toString());
                     }
 
                     @Override
@@ -49,6 +74,5 @@ public class CustomActivity extends AppCompatActivity {
 
                     }
                 });
-
     }
 }
