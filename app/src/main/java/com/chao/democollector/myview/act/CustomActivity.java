@@ -3,13 +3,13 @@ package com.chao.democollector.myview.act;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.chao.democollector.R;
 import com.chao.democollector.bean.User;
 import com.chao.democollector.net.GitHubManager;
 import com.chao.democollector.net.GitHubService;
 import com.chao.democollector.req.ReqUser;
+import com.chao.democollector.util.ALog;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,12 +38,12 @@ public class CustomActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(User users) {
-                        Log.e("TAG", users.toString());
+                        ALog.e(users.toString());
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("TAG", e.getMessage());
+                        ALog.e(e.getMessage());
                     }
 
                     @Override
@@ -61,7 +61,7 @@ public class CustomActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(User user) {
-                            Log.e("TAG", user.toString());
+                        ALog.e(user.toString());
                     }
 
                     @Override
