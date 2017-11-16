@@ -17,3 +17,4 @@ class MainActivity : AppCompatActivity() {
         myView.onClick { startActivity<CustomActivity>() }
     }
 }
+

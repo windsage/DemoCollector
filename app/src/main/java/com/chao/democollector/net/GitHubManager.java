@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GitHubManager {
 
     private static final String BASE_URL = "https://api.github.com/";
-    private static final int time_out = 20;
+    private static final int time_out = 1000;
 
     public GitHubService getApiService() {
         Interceptor interceptor = new Interceptor() {

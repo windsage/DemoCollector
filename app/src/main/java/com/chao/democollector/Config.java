@@ -6,5 +6,5 @@ package com.chao.democollector;
 
 public class Config {
 
-    public static final String ACCESS_TOKEN = "5d88d2ef2cf39f60d40dfa6578d8393b203758b0";
+    public static final String ACCESS_TOKEN = "944d3a5ed2dcc83ff0356e39656546b85fdf17b8";
 }
