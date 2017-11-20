@@ -25,6 +25,8 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".myview.act.CustomActivity"/>
+        <activity android:name=".rx.RxActivity">
+        </activity>
     </application>
 
 </manifest>

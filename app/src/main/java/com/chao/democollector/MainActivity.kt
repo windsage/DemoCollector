@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.chao.democollector.myview.act.CustomActivity
 import com.chao.democollector.recyclerview.RecyclerActivity
+import com.chao.democollector.rx.RxActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         caseRecycler.onClick { startActivity<RecyclerActivity>() }
         myView.onClick { startActivity<CustomActivity>() }
+        myRx.onClick { startActivity<RxActivity>() }
     }
 }
 

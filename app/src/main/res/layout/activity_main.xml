@@ -21,4 +21,11 @@
         android:gravity="center"
         android:text="myView"/>
 
+    <TextView
+        android:id="@+id/myRx"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="myRx"/>
+
 </LinearLayout>
