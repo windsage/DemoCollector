@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.chao.democollector">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+          package="org.jeff.kotlin">
 
     <application
-        android:name=".Jpp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,19 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".recyclerview.RecyclerActivity"
-            android:label="@string/title_activity_recycler"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".myview.act.CustomActivity"/>
-        <activity android:name=".rx.RxActivity">
-        </activity>
-
-        <service
-            android:name=".rx.KeepService"
-            android:exported="true">
-        </service>
     </application>
 
 </manifest>
