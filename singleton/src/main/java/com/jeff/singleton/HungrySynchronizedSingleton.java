@@ -16,8 +16,8 @@ public class HungrySynchronizedSingleton {
         synchronized (HungrySynchronizedSingleton.class) {
             if (instance == null)
                 instance = new HungrySynchronizedSingleton();
-            return instance;
         }
+        return instance;
     }
 
 /**
