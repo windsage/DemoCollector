@@ -1,1 +1,1 @@
-include ':app', ':kotlin', ':binderclient', ':ndk', ':binderservice'
+include ':app', ':kotlin', ':binderclient', ':ndk', ':binderservice', ':singleton'

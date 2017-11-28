@@ -6,23 +6,14 @@ android {
 
 
     defaultConfig {
-        applicationId "org.jeff.ndk"
+        applicationId "com.jeff.singleton"
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        ndk{
-            moduleName "hello"
-            abiFilters "armeabi","armeabi-v7a","x86"
-        }
 
-    }
-    externalNativeBuild {
-        cmake {
-            version "3.7.1"
-        }
     }
 
     buildTypes {
